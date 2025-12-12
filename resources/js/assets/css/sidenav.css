@@ -1,0 +1,37 @@
+/* SideNavBar.css*/
+
+.css-dip3t8 {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 3;
+  background-color: #022759 !important;
+
+}
+
+ul>li.ps-menuitem-root {
+  background-color: #022759 !important;
+}
+
+.css-ewdv3l {
+  list-style-type: none;
+
+}
+
+.css-12w9als {
+  color: #fff;
+  font-size: 15px;
+}
+
+a.ps-menu-button:hover {
+  background-color: #007bff !important;
+}
+
+span.ps-submenu-expand-icon.css-1cuxlhl {
+  color: #fff;
+}
+
+.float-end.dropdown-menu.show {
+  width: 100%;
+}

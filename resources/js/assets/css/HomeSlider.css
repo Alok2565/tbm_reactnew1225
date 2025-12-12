@@ -1,0 +1,60 @@
+.slick-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+.slick-prev:before,
+.slick-next:before {
+  color: #132573;
+  font-size: 30px;
+}
+
+
+.slick-prev {
+  left: 10px;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 10px;
+  z-index: 1;
+}
+
+.slick-dots {
+  bottom: 20px !important;
+  display: block !important;
+  color: #132573;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+  color: #132573;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #132573;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Remove any unwanted border or focus outline */
+.slider-wrapper img {
+  border: none;
+  display: block;
+}
+
+.slider-wrapper img:focus {
+  outline: none;
+}
+
+.slider-wrapper a:focus {
+  outline: none;
+}
+
+.slick-slide {
+  outline: none;
+}
