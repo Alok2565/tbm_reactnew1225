@@ -195,5 +195,6 @@ export default HomeSlider;
 //         </div>
 //     );
 // }
+// export default HomeSlider;
 
 

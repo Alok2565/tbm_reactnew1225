@@ -34,6 +34,14 @@ import EditHomeSlider from "./Backend/components/admin/home_banner/EditHomeSlide
 import ProtectedRoute from "./Frontend/components/auth/ProtectedRoute";
 import GeneratePassword from "./Frontend/components/auth/GeneratePassword";
 import GeneratePasswordLinkMessage from "./Frontend/components/auth/GeneratePasswordLinkMessage";
+import ApplyNocRequest from "./Backend/components/imp-exp/exporter/ApplyNocRequest";
+import ApplicationList from "./Backend/components/imp-exp/exporter/ApplicationList";
+import HsCodes from "./Backend/components/admin/hs_code/HsCodes";
+import AddNewHsCode from "./Backend/components/admin/hs_code/AddNewHsCode";
+import EditHsCode from "./Backend/components/admin/hs_code/EditHsCode";
+import NaturalBiomaterials from "./Backend/components/admin/natural_biomaterials/NaturalBiomaterials";
+import AddNaturalBiomaterial from "./Backend/components/admin/natural_biomaterials/AddNaturalBiomaterial";
+import EditNaturalBiomaterial from "./Backend/components/admin/natural_biomaterials/EditNaturalBiomaterial";
 
 
 
@@ -69,7 +77,19 @@ function App({ role }) {
                         <Route path="slider/add_new" element={<AddHomeSlider />} />
                         <Route path="slider/edit/:id" element={<EditHomeSlider />} />
 
+                        <Route path="hs_codes" element={<HsCodes />} />
+                        <Route path="hs_code/add_new" element={<AddNewHsCode />} />
+                        <Route path="hs_code/edit/:id" element={<EditHsCode />} />
+
+                        <Route path="natural_biomaterials" element={<NaturalBiomaterials />} />
+                        <Route path="natural_biomaterial/add_new" element={<AddNaturalBiomaterial/>} />
+                        <Route path="natural_biomaterial/edit/:id" element={<EditNaturalBiomaterial />} />
+
                         <Route path="change-password" element={<ChangePassword />}/>
+
+                        {/* IMP-Exp */}
+                        <Route path="exporter/apply-noc-application" element={<ApplyNocRequest/>}/>
+                        <Route path="exporter/applications" element={<ApplicationList/>}/>
                     </Route>
 
                     <Route exact path="*" element={<PageNotFound />} />

@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\PasswordSetupController;
 use App\Http\Controllers\Admin\HomeSliderController;
+use App\Http\Controllers\Admin\HsCodeController;
+use App\Http\Controllers\Admin\NaturalBiomaterialController;
 use App\Http\Controllers\Auth\ImpExpUserLoginController;
 use App\Http\Controllers\Committee\CommitteeController;
 use App\Http\Controllers\Auth\ImpExpUserRegisterController;
@@ -28,6 +30,20 @@ Route::get('/users/{id}', [UserController::class, 'showUserData']);
 Route::put('/user/update/{id}', [UserController::class, 'updateUser']);
 Route::put('/users/status/{id}', [UserController::class, 'statusUser']);
 Route::delete('/users/delete/{id}', [UserController::class, 'deleteUser']);
+
+Route::get('/hs_codes', [HsCodeController::class, 'index']);
+Route::post('/hs_code/create', [HsCodeController::class, 'createHsCode']);
+Route::get('/hs_codes/{id}', [HsCodeController::class, 'showHsCodeData']);
+Route::put('/hs_code/update/{id}', [HsCodeController::class, 'updateHsCode']);
+Route::put('/hs_code/status/{id}', [HsCodeController::class, 'statusHsCode']);
+Route::delete('/hs_code/delete/{id}', [HsCodeController::class, 'deleteHsCode']);
+
+Route::get('/natural_biomaterials', [NaturalBiomaterialController::class, 'index']);
+Route::post('/natural_biomaterial/create', [NaturalBiomaterialController::class, 'createNaturalBiomaterial']);
+Route::get('/natural_biomaterials/{id}', [NaturalBiomaterialController::class, 'showNaturalBiomaterialData']);
+Route::put('/natural_biomaterial/update/{id}', [NaturalBiomaterialController::class, 'updateNaturalBiomaterial']);
+Route::put('/natural_biomaterial/status/{id}', [NaturalBiomaterialController::class, 'statusNaturalBiomaterial']);
+Route::delete('/natural_biomaterial/delete/{id}', [NaturalBiomaterialController::class, 'deleteNaturalBiomaterial']);
 
 Route::get('/userlogin-data/{id}', [UserController::class, 'userLoginData']);
 Route::put('/generate-password/{id}', [PasswordSetupController::class, 'generatePassword']);

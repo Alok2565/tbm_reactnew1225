@@ -180,8 +180,8 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All HS Codes</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Code</MenuItem>
+                                <MenuItem component={<Link to="/admin/hs-codes" />}>All HS Codes</MenuItem>
+                                <MenuItem component={<Link to="/admin/hs-code/add_new" />}>Add New Code</MenuItem>
                             </SubMenu>
 
                             {/* Natural Biomaterials */}
@@ -191,8 +191,8 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All Natural Biomaterials</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Natural Biomaterial</MenuItem>
+                                <MenuItem component={<Link to="/admin/natural_biomaterials" />}>All Natural Biomaterials</MenuItem>
+                                <MenuItem component={<Link to="/admin/natural_biomaterial/add_new" />}>Add New Natural Biomaterial</MenuItem>
                             </SubMenu>
 
                             {/* Quantity */}
@@ -258,8 +258,8 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem>Apply for new NOC</MenuItem>
-                                <MenuItem>Applications under review</MenuItem>
+                                <MenuItem component ={<Link to="/imp-exp/exporter/apply-noc-application/"></Link>}>Apply for new NOC</MenuItem>
+                                <MenuItem component={<Link to="/imp-exp/exporter/applications"></Link>}>Applications under review</MenuItem>
                                 <MenuItem>Decision on Submitted Applications</MenuItem>
                                 <MenuItem>Rejected Applications</MenuItem>
                                 <MenuItem>Draft Applications</MenuItem>
