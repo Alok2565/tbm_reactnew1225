@@ -180,8 +180,8 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="/admin/hs-codes" />}>All HS Codes</MenuItem>
-                                <MenuItem component={<Link to="/admin/hs-code/add_new" />}>Add New Code</MenuItem>
+                                <MenuItem component={<Link to="/admin/hs_codes" />}>All HS Codes</MenuItem>
+                                <MenuItem component={<Link to="/admin/hs_code/add_new" />}>Add New Code</MenuItem>
                             </SubMenu>
 
                             {/* Natural Biomaterials */}

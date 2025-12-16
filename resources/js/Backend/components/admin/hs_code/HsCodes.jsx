@@ -17,7 +17,7 @@ import axios from "axios";
 import { MdOutlineToggleOff, MdOutlineToggleOn } from "react-icons/md";
 
 function HsCodes() {
-    useTitle("Role Lists");
+    useTitle("Hs Code Lists");
     const { role } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
@@ -84,12 +84,12 @@ function HsCodes() {
     };
 
     const handleDelete = async (id) => {
-        if (!window.confirm("Are you sure you want to delete this role?"))
+        if (!window.confirm("Are you sure you want to delete this Cod?"))
             return;
 
         try {
             await axios.delete(`http://127.0.0.1:8000/api/hs_code/delete/${id}`);
-            alert("Role deleted successfully.");
+            alert("Hs Code deleted successfully.");
             // Refresh roles list
             setHsCode((prevRoles) => prevRoles.filter((r) => r.id !== id));
         } catch (error) {
@@ -204,7 +204,7 @@ function HsCodes() {
                                                     <td>
                                                         {new Date(
                                                             item.created_at
-                                                        ).toLocaleString()}
+                                                        ).toLocaleDateString("en-GB")}
                                                     </td>
                                                     <td>
                                                         <Button
@@ -228,6 +228,7 @@ function HsCodes() {
                                                         </Button>
                                                     </td>
                                                     <td>
+                                                        <Col className="d-flex">
                                                         <Button
                                                             onClick={() =>
                                                                 handleEdit(
@@ -249,6 +250,7 @@ function HsCodes() {
                                                         >
                                                             <RiDeleteBin6Fill />
                                                         </Button>
+                                                        </Col>
                                                     </td>
                                                 </tr>
                                             ))
