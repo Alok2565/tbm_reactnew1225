@@ -30,12 +30,6 @@ class LoginController extends Controller
                 ->where('email', $request->email)
                 ->where('validity_status', 'true')
                 ->first();
-            //$userLogin = DB::table('user_logins')->get();
-
-            // $userLogin = UserLogin::with(['user.role'])
-            //     ->where('email', $request->email)
-            //     ->first();
-            //dd($userLogin);
             if (!$userLogin || !$userLogin->user) {
                 Log::warning("LOGIN FAILED - Email not found", [
                     'email' => $request->email,

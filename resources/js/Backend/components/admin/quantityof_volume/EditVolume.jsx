@@ -14,8 +14,8 @@ import axios from "axios";
 import useTitle from "../../../hooks/useTitle";
 import API from "../../../../utils/http";
 
-function EditNaturalBiomaterial() {
-    useTitle("Edit Natural Biomaterial");
+function EditVolume() {
+    useTitle("Edit Qty. Volume");
 
     const { id, role } = useParams();
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ function EditNaturalBiomaterial() {
         }
 
         try {
-            await API.put(`/natural_biomaterial/update/${id}`, {
+            await API.put(`/volume/update/${id}`, {
                 name,
                 value,
             },
@@ -53,7 +53,7 @@ function EditNaturalBiomaterial() {
                     },
                 });
             alert("Record updated successfully.");
-            navigate(`/${role}/natural_biomaterials`); 
+            navigate(`/${role}/volumes`); 
         } catch (error) {
             alert("Error updating record: " + error.response?.data?.message);
         }
@@ -70,7 +70,7 @@ function EditNaturalBiomaterial() {
                                     <h4>Update Record</h4>
                                 </div>
                                 <div className="p-2 ms-auto">
-                                    <Link to={`/${role}/natural_biomaterials`} className="text-decoration-none">
+                                    <Link to={`/${role}/volumes`} className="text-decoration-none">
                                         <Button variant="primary" className="d-flex align-items-center gap-2">
                                             <FaLongArrowAltLeft />
                                             Back
@@ -117,5 +117,5 @@ function EditNaturalBiomaterial() {
     );
 }
 
-export default EditNaturalBiomaterial;
+export default EditVolume;
 

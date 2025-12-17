@@ -11,6 +11,8 @@ use App\Http\Controllers\PasswordSetupController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\HsCodeController;
 use App\Http\Controllers\Admin\NaturalBiomaterialController;
+use App\Http\Controllers\Admin\QuantityofVolumeController;
+use App\Http\Controllers\Admin\whereSamplesCollectedController;
 use App\Http\Controllers\Auth\ImpExpUserLoginController;
 use App\Http\Controllers\Committee\CommitteeController;
 use App\Http\Controllers\Auth\ImpExpUserRegisterController;
@@ -30,20 +32,6 @@ Route::get('/users/{id}', [UserController::class, 'showUserData']);
 Route::put('/user/update/{id}', [UserController::class, 'updateUser']);
 Route::put('/users/status/{id}', [UserController::class, 'statusUser']);
 Route::delete('/users/delete/{id}', [UserController::class, 'deleteUser']);
-
-Route::get('/hs_codes', [HsCodeController::class, 'index']);
-Route::post('/hs_code/create', [HsCodeController::class, 'createHsCode']);
-Route::get('/hs_codes/{id}', [HsCodeController::class, 'showHsCodeData']);
-Route::put('/hs_code/update/{id}', [HsCodeController::class, 'updateHsCode']);
-Route::put('/hs_code/status/{id}', [HsCodeController::class, 'statusHsCode']);
-Route::delete('/hs_code/delete/{id}', [HsCodeController::class, 'deleteHsCode']);
-
-Route::get('/natural_biomaterials', [NaturalBiomaterialController::class, 'index']);
-Route::post('/natural_biomaterial/create', [NaturalBiomaterialController::class, 'createNaturalBiomaterial']);
-Route::get('/natural_biomaterials/{id}', [NaturalBiomaterialController::class, 'showNaturalBiomaterialData']);
-Route::put('/natural_biomaterial/update/{id}', [NaturalBiomaterialController::class, 'updateNaturalBiomaterial']);
-Route::put('/natural_biomaterial/status/{id}', [NaturalBiomaterialController::class, 'statusNaturalBiomaterial']);
-Route::delete('/natural_biomaterial/delete/{id}', [NaturalBiomaterialController::class, 'deleteNaturalBiomaterial']);
 
 Route::get('/userlogin-data/{id}', [UserController::class, 'userLoginData']);
 Route::put('/generate-password/{id}', [PasswordSetupController::class, 'generatePassword']);
@@ -72,11 +60,63 @@ Route::post('/logout', [UserLogoutController::class, 'logoutUser']);
 //     Route::get('/admin/dashboard',     [AdminController::class, 'index']);
 //     Route::get('/icmr/dashboard',      [IcmrController::class, 'index']);
 //     Route::get('/committee/dashboard', [CommitteeController::class, 'index']);
+//     Route::get('/imp-exp/dashboard',     [AdminController::class, 'index']);
 // });
 
+// Route::middleware('role:admin')->get(
+//     '/admin/dashboard',
+//     [AdminController::class, 'index']
+// );
+
+
+//Route::middleware(['jwt_verify.token'])->get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
+Route::group(['middleware' => ['jwt_verify.token']], function () {
+
+    Route::get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
+    //dd("Testsdfsdgfvsdv");
+});
+
+// Route::middleware('role:icmr')->get(
+//     '/icmr/dashboard',
+//     [IcmrController::class, 'index']
+// );
+
+// Route::middleware('role:committee')->get(
+//     '/committee/dashboard',
+//     [CommitteeController::class, 'index']
+// );
 Route::get('/sliders', [HomeSliderController::class, 'index']);
 Route::post('/slider/create', [HomeSliderController::class, 'createBannerSlider']);
 Route::get('/sliders/{id}', [HomeSliderController::class, 'showSliderData']);
 Route::put('/slider/update/{id}', [HomeSliderController::class, 'updateSlider']);
 Route::put('/slider/status/{id}', [HomeSliderController::class, 'statusSlider']);
 Route::delete('/slider/delete/{id}', [HomeSliderController::class, 'deleteSlider']);
+
+
+Route::get('/hs_codes', [HsCodeController::class, 'index']);
+Route::post('/hs_code/create', [HsCodeController::class, 'createHsCode']);
+Route::get('/hs_code/{id}', [HsCodeController::class, 'showHsCodeData']);
+Route::put('/hs_code/update/{id}', [HsCodeController::class, 'updateHsCode']);
+Route::put('/hs_code/status/{id}', [HsCodeController::class, 'statusHsCode']);
+Route::delete('/hs_code/delete/{id}', [HsCodeController::class, 'deleteHsCode']);
+
+Route::get('/natural_biomaterials', [NaturalBiomaterialController::class, 'index']);
+Route::post('/natural_biomaterial/create', [NaturalBiomaterialController::class, 'createNatBioMat']);
+Route::get('/natural_biomaterial/{id}', [NaturalBiomaterialController::class, 'showNatBioMatData']);
+Route::put('/natural_biomaterial/update/{id}', [NaturalBiomaterialController::class, 'updateNatBioMat']);
+Route::put('/natural_biomaterial/status/{id}', [NaturalBiomaterialController::class, 'statusNatBioMat']);
+Route::delete('/natural_biomaterial/delete/{id}', [NaturalBiomaterialController::class, 'deleteNatBioMat']);
+
+Route::get('/volumes', [QuantityofVolumeController::class, 'index']);
+Route::post('/volume/create', [QuantityofVolumeController::class, 'createQtyVolume']);
+Route::get('/volume/{id}', [QuantityofVolumeController::class, 'showQtyVolumeData']);
+Route::put('/volume/update/{id}', [QuantityofVolumeController::class, 'updateQtyVolume']);
+Route::put('/volume/status/{id}', [QuantityofVolumeController::class, 'statusQtyVolume']);
+Route::delete('/volume/delete/{id}', [QuantityofVolumeController::class, 'deleteQtyVolume']);
+
+Route::get('/where_samples_collected', [whereSamplesCollectedController::class, 'index']);
+Route::post('/where_sample_collected/create', [whereSamplesCollectedController::class, 'createSamplesCollectede']);
+Route::get('/where_sample_collected/{id}', [whereSamplesCollectedController::class, 'showSamplesCollectedeData']);
+Route::put('/where_sample_collected/update/{id}', [whereSamplesCollectedController::class, 'updateSamplesCollectede']);
+Route::put('/where_sample_collected/status/{id}', [whereSamplesCollectedController::class, 'statusSamplesCollectede']);
+Route::delete('/where_sample_collected/delete/{id}', [whereSamplesCollectedController::class, 'deleteSamplesCollectede']);

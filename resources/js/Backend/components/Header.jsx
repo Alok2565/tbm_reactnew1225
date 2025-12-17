@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from "react";
 import "../../assets/css/dashboard.css";
+import "../../assets/css/custom.css";
 import { Dropdown, Col, Nav } from "react-bootstrap";
 import { MdMenu } from "react-icons/md";
 import { Link, useParams, useNavigate } from "react-router-dom";

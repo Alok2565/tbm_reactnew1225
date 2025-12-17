@@ -5,25 +5,24 @@ namespace App\Http\Controllers\Admin;
 use Exception;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use App\Models\NaturalBiomaterial;
+use App\Models\QuantityofVolume;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 
-class NaturalBiomaterialController extends Controller
+class QuantityofVolumeController extends Controller
 {
     public function index()
     {
-        $allData = NaturalBiomaterial::all();
+        $allData = QuantityofVolume::all();
         return response()->json([
             'success' => true,
             'data' => $allData
         ]);
     }
 
-    public function createNatBioMat(Request $request)
+    public function createQtyVolume(Request $request)
     {
-
         DB::beginTransaction();
 
         try {
@@ -32,7 +31,7 @@ class NaturalBiomaterialController extends Controller
                 'value' => 'required|string|max:255',
             ]);
 
-            $createData = new NaturalBiomaterial();
+            $createData = new QuantityofVolume();
             $createData->name  = $request->name;
             $createData->value = $request->value;
             $createData->save();
@@ -43,7 +42,6 @@ class NaturalBiomaterialController extends Controller
             ]);
 
             DB::commit();
-
             return response()->json([
                 'message' => 'HS Code created successfully!',
                 'data' => $createData,
@@ -51,7 +49,6 @@ class NaturalBiomaterialController extends Controller
         } catch (\Exception $e) {
 
             DB::rollBack();
-
             Log::channel('user_access')->error('Error creating Data.', [
                 'error_message' => $e->getMessage(),
                 'creation_date' => now()->toDateTimeString()
@@ -62,12 +59,11 @@ class NaturalBiomaterialController extends Controller
             ], 500);
         }
     }
-    public function showNatBioMatData($id)
+    public function showQtyVolumeData($id)
     {
-        return NaturalBiomaterial::findOrFail($id);
+        return QuantityofVolume::findOrFail($id);
     }
-
-    public function updateNatBioMat(Request $request, string $id)
+    public function updateQtyVolume(Request $request, string $id)
     {
         DB::beginTransaction();
         try {
@@ -76,7 +72,7 @@ class NaturalBiomaterialController extends Controller
                 'value' => 'required|string|max:255',
             ]);
 
-            $updateData = NaturalBiomaterial::findOrFail($id);
+            $updateData = QuantityofVolume::findOrFail($id);
 
             $updateData->name  = $request->name;
             $updateData->value = $request->value;
@@ -95,7 +91,7 @@ class NaturalBiomaterialController extends Controller
                 'message' => 'Data has been updated successfully!',
                 'data'    => $updateData,
             ], 200);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             DB::rollBack();
             Log::channel('user_access')->error('Error updating data.', [
                 'error_message' => $e->getMessage(),
@@ -107,11 +103,10 @@ class NaturalBiomaterialController extends Controller
             ], 500);
         }
     }
-
-    public function statusNatBioMat($id)
+    public function statusQtyVolume($id)
     {
         try {
-            $stData = NaturalBiomaterial::findOrFail($id);
+            $stData = QuantityofVolume::findOrFail($id);
             $stData->status = $stData->status == 1 ? 0 : 1;
             $stData->save();
 
@@ -137,11 +132,10 @@ class NaturalBiomaterialController extends Controller
             ], 500);
         }
     }
-
-    public function deleteNatBioMat($id)
+    public function deleteQtyVolume($id)
     {
         try {
-            $delData = NaturalBiomaterial::findOrFail($id);
+            $delData = QuantityofVolume::findOrFail($id);
             $delData->delete();
 
             Log::channel('user_access')->info('Data deleted.', [

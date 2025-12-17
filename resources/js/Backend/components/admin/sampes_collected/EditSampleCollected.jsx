@@ -1,3 +1,13 @@
+// import React from 'react'
+
+// function EditSampleCollected() {
+//   return (
+//     <div>EditSampleCollected</div>
+//   )
+// }
+
+// export default EditSampleCollected
+
 import React, { useState, useEffect } from "react";
 import {
     Button,
@@ -14,8 +24,8 @@ import axios from "axios";
 import useTitle from "../../../hooks/useTitle";
 import API from "../../../../utils/http";
 
-function EditNaturalBiomaterial() {
-    useTitle("Edit Natural Biomaterial");
+function EditVolume() {
+    useTitle("Edit Sample Collected");
 
     const { id, role } = useParams();
     const navigate = useNavigate();
@@ -25,7 +35,7 @@ function EditNaturalBiomaterial() {
     const [validated, setValidated] = useState(false);
 
    useEffect(() => {
-        API.get(`natural_biomaterial/${id}`).then((res) => {
+        API.get(`where_samples_collected/${id}`).then((res) => {
             setName(res.data.name);
             setValue(res.data.value);
         });
@@ -42,7 +52,7 @@ function EditNaturalBiomaterial() {
         }
 
         try {
-            await API.put(`/natural_biomaterial/update/${id}`, {
+            await API.put(`/where_sample_collected/update/${id}`, {
                 name,
                 value,
             },
@@ -53,7 +63,7 @@ function EditNaturalBiomaterial() {
                     },
                 });
             alert("Record updated successfully.");
-            navigate(`/${role}/natural_biomaterials`); 
+            navigate(`/${role}/where_samples_collected`); 
         } catch (error) {
             alert("Error updating record: " + error.response?.data?.message);
         }
@@ -70,7 +80,7 @@ function EditNaturalBiomaterial() {
                                     <h4>Update Record</h4>
                                 </div>
                                 <div className="p-2 ms-auto">
-                                    <Link to={`/${role}/natural_biomaterials`} className="text-decoration-none">
+                                    <Link to={`/${role}/where_samples_collected`} className="text-decoration-none">
                                         <Button variant="primary" className="d-flex align-items-center gap-2">
                                             <FaLongArrowAltLeft />
                                             Back
@@ -117,5 +127,5 @@ function EditNaturalBiomaterial() {
     );
 }
 
-export default EditNaturalBiomaterial;
+export default EditVolume;
 

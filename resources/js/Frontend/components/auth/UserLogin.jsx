@@ -190,7 +190,8 @@ import { Container, Col, Form, Row, Button, InputGroup } from 'react-bootstrap';
 import authLogo from '../../../assets/images/auth_icmr_logo.png';
 import CaptchaComponent from './CaptchaComponent';
 import useTitle from "../../hooks/useTitle";
-import axios from "axios";
+//import axios from "axios";
+import API from "../../../utils/http.js";
 
 function UserLogin() {
     useTitle("Login");
@@ -241,8 +242,8 @@ const handleLogin = async () => {
         if (!role) return;
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:8000/api/login",
+            const response = await API.post(
+                "login",
                 { email, password }
             );
 

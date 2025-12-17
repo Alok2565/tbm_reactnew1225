@@ -1,7 +1,7 @@
 // src/components/NavSidebar.jsx
 
 import React, { useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, Links } from "react-router-dom";
 import "../../assets/css/sidenav.css";
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
@@ -28,7 +28,7 @@ function NavSidebar({ collapsed }) {
     const tightItemStyle = {
         display: "flex",
         alignItems: "center",
-        gap: "4px",
+        gap: "1px",
     };
 
     return (
@@ -195,15 +195,26 @@ function NavSidebar({ collapsed }) {
                                 <MenuItem component={<Link to="/admin/natural_biomaterial/add_new" />}>Add New Natural Biomaterial</MenuItem>
                             </SubMenu>
 
-                            {/* Quantity */}
+                            {/* Where were sample collected */}
                             <SubMenu
                                 icon={<FaSliders color="white" />}
-                                label="Quantity of Samples"
+                                label="Where Sample Collected"
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All Quantities</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Quantity</MenuItem>
+                                <MenuItem component={<Link to="/admin/where_samples_collected" />}>All Samples Collected</MenuItem>
+                                <MenuItem component={<Link to="/admin/where_sample_collected/add_new" />}>Add Sample Collected</MenuItem>
+                            </SubMenu>
+
+                            {/* Quantity */}
+                            <SubMenu
+                                icon={<FaSliders color="white" />}
+                                label="Quantity of Volume Unit"
+                                className="border-top"
+                                style={tightItemStyle}
+                            >
+                                <MenuItem component={<Link to="/admin/volumes" />}>All Volumes</MenuItem>
+                                <MenuItem component={<Link to="/admin/volume/add_new" />}>Add New Volume</MenuItem>
                             </SubMenu>
 
                             {/* Purpose */}
@@ -258,8 +269,8 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component ={<Link to="/imp-exp/exporter/apply-noc-application/"></Link>}>Apply for new NOC</MenuItem>
-                                <MenuItem component={<Link to="/imp-exp/exporter/applications"></Link>}>Applications under review</MenuItem>
+                                <MenuItem component={<Link to="/imp-exp/exporter/apply-noc-application"/>}>Apply for new NOC</MenuItem>
+                                <MenuItem component={<Link to="/imp-exp/applications"/>}>Applications under review</MenuItem>
                                 <MenuItem>Decision on Submitted Applications</MenuItem>
                                 <MenuItem>Rejected Applications</MenuItem>
                                 <MenuItem>Draft Applications</MenuItem>

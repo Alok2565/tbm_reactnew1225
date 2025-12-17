@@ -14,8 +14,8 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import useTitle from "../../../hooks/useTitle";
 import API from "../../../../utils/http";
 
-function AddNaturalBiomaterial() {
-    useTitle("Add Hs Code");
+function AddSampeCollected() {
+    useTitle("Add Sample Collected");
     const [name, setName] = useState("");
     const [value, setValue] = useState("");
     const [loading, setLoading] = useState(false);
@@ -45,7 +45,7 @@ function AddNaturalBiomaterial() {
         value,
     };
     try {
-        const response = await API.post("/natural_biomaterial/create/",
+        const response = await API.post("/where_sample_collected/create/",
             newUser,
             {Method:"POST",
                 headers: {
@@ -56,7 +56,7 @@ function AddNaturalBiomaterial() {
         );
 
         navigate(
-            `/${role}/natural_biomaterials?success=Natural Biomaterials%20has%20been%20created%20successfully!.`
+            `/${role}/where_samples_collected?success=Sample Collected%20has%20been%20created%20successfully!.`
         );
     } catch (error) {
         if (error.response && error.response.status === 422) {
@@ -78,11 +78,11 @@ function AddNaturalBiomaterial() {
                         <Col lg={12}>
                             <Stack direction="horizontal" gap={3}>
                                 <div className="p-2">
-                                    <h4>Natural Biomaterial</h4>
+                                    <h4>Quantity of volume</h4>
                                 </div>
                                 <div className="p-2 ms-auto">
                                     <Link
-                                        to={`/${role}/natural_biomaterials`}
+                                        to={`/${role}/volumes`}
                                         className="text-decoration-none"
                                     >
                                         <Button
@@ -167,29 +167,4 @@ function AddNaturalBiomaterial() {
         </div>
     );
 }
-export default AddNaturalBiomaterial;
-
-
-// import React from 'react'
-
-// function AddNewHsCode() {
-//   return (
-//     <div>
-//       <h3>Add new</h3>
-//     </div>
-//   )
-// }
-
-// export default AddNewHsCode
-
-// import React from 'react'
-
-// function AddNaturalBiomaterial() {
-//   return (
-//     <div>
-//       <h3>Add New Natural</h3>
-//     </div>
-//   )
-// }
-
-// export default AddNaturalBiomaterial
+export default AddSampeCollected;

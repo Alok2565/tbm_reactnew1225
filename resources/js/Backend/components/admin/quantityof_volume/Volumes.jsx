@@ -17,12 +17,12 @@ import useTitle from "../../../hooks/useTitle";
 import API from "../../../../utils/http";
 import { MdOutlineToggleOff, MdOutlineToggleOn } from "react-icons/md";
 
-function HsCodes() {
-    useTitle("Hs Code Lists");
+function Volumes() {
+    useTitle("Qty. Volume Lists");
     const { role } = useParams();
     const location = useLocation();
     const navigate = useNavigate();
-    const [hs_codes, setHsCode] = useState([]);
+    const [names, setNames] = useState([]);
     const [successMessage, setSuccessMessage] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -30,11 +30,11 @@ function HsCodes() {
 
     const fetchData = async () => {
         try {
-            const res = await API.get("/hs_codes");
-            setHsCode(res.data.data || []);
+            const res = await API.get("/volumes");
+            setNames(res.data.data || []);
         } catch (error) {
-            console.error("Error fetching Hs Codes:", error);
-            alert("Failed to fetch Codes. Please try again later.");
+            console.error("Error fetching rcord:", error);
+            alert("Failed to fetch Records. Please try again later.");
         }
     };
 
@@ -43,18 +43,18 @@ function HsCodes() {
     }, []);
     const handleEdit = (id) => {
         const baseRole = role || "admin";
-        console.log("Navigating to edit:", `/${baseRole}/hs_code/edit/${id}`);
-        navigate(`/${baseRole}/hs_code/edit/${id}`);
+        console.log("Navigating to edit:", `/${baseRole}/volume/edit/${id}`);
+        navigate(`/${baseRole}/volume/edit/${id}`);
     };
     const handleStatus = async (id) => {
         try {
             const response = await API.put(
-                `hs_code/status/${id}`
+                `/volume/status/${id}`
             );
             alert(response.data.message || "Status updated.");
             fetchData();
         } catch (error) {
-            console.error("Error updating Code status:", error);
+            console.error("Error updating record status:", error);
             if (error.response) {
                 alert(`Error: ${error.response.data.error}`);
             } else {
@@ -69,8 +69,8 @@ function HsCodes() {
         if (success) setSuccessMessage(success);
     }, [location]);
 
-    const filteredData = hs_codes.filter((item) =>
-        item.hs_code?.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = names.filter((item) =>
+        item.name?.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     const totalPages = Math.ceil(filteredData.length / entriesPerPage);
@@ -85,12 +85,12 @@ function HsCodes() {
     };
 
     const handleDelete = async (id) => {
-        if (!window.confirm("Are you sure you want to delete this Cod?"))
+        if (!window.confirm("Are you sure you want to delete this record?"))
             return;
 
         try {
-            await API.delete(`/hs_code/delete/${id}`);
-            alert("Hs Code deleted successfully.");
+            await API.delete(`/volume/delete/${id}`);
+            alert("Record deleted successfully.");
             // Refresh roles list
             setHsCode((prevRoles) => prevRoles.filter((r) => r.id !== id));
         } catch (error) {
@@ -107,11 +107,11 @@ function HsCodes() {
                     <Col lg={12}>
                         <Stack direction="horizontal" gap={3} className="mb-3">
                             <div>
-                                <h4>List of Codes</h4>
+                                <h4>List of Records</h4>
                             </div>
                             <div className="ms-auto">
                                 <Link
-                                    to={`/${role || "admin"}/hs_code/add_new`}
+                                    to={`/${role || "admin"}/volume/add_new`}
                                     className="text-decoration-none"
                                 >
                                     <Button
@@ -119,7 +119,7 @@ function HsCodes() {
                                         className="d-flex align-items-center gap-2"
                                     >
                                         <FaPlus />
-                                        Add New Code
+                                        Add New Record
                                     </Button>
                                 </Link>
                             </div>
@@ -184,8 +184,8 @@ function HsCodes() {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Hs Code</th>
-                                            <th>Desc</th>
+                                            <th>Name of item</th>
+                                            <th>Value of item</th>
                                             <th>Date of Creation</th>
                                             <th>Status</th>
                                             <th>Actions</th>
@@ -200,8 +200,8 @@ function HsCodes() {
                                                             index +
                                                             1}
                                                     </td>
-                                                    <td>{item.hs_code}</td>
-                                                    <td>{item.desc}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.value}</td>
                                                     <td>
                                                         {new Date(
                                                             item.created_at
@@ -317,16 +317,5 @@ function HsCodes() {
     );
 }
 
-export default HsCodes;
+export default Volumes;
 
-// import React from 'react'
-
-// function HsCodes() {
-//   return (
-//     <div>
-//       <h3>List Of Hs code</h3>
-//     </div>
-//   )
-// }
-
-// export default HsCodes

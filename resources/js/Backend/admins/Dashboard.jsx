@@ -263,3 +263,29 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+// import React, { useEffect, useState } from "react";
+// import axios from "axios";
+// import API from "../../utils/http"
+
+// export default function Dashboard() {
+//   const [rolesCount, setRolesCount] = useState({});
+
+//   useEffect(() => {
+//     API.get("admin/dashboard")
+//       .then(res => {
+//         if (res.data.success) {
+//           setRolesCount(res.data.data);
+//         }
+//       })
+//       .catch(err => console.error(err));
+//   }, []);
+
+//   return (
+//     <div>
+//       <h2>Dashboard</h2>
+//       <p>Total Admins: {rolesCount.admin || 0}</p>
+//       <p>Total Users: {rolesCount.user || 0}</p>
+//     </div>
+//   );
+// }

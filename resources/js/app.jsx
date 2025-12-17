@@ -34,16 +34,20 @@ import EditHomeSlider from "./Backend/components/admin/home_banner/EditHomeSlide
 import ProtectedRoute from "./Frontend/components/auth/ProtectedRoute";
 import GeneratePassword from "./Frontend/components/auth/GeneratePassword";
 import GeneratePasswordLinkMessage from "./Frontend/components/auth/GeneratePasswordLinkMessage";
-import ApplyNocRequest from "./Backend/components/imp-exp/exporter/ApplyNocRequest";
-import ApplicationList from "./Backend/components/imp-exp/exporter/ApplicationList";
+import ApplyNocRequest from "./Backend/components/imp_exp/exporters/ApplyNocRequest";
+import AppliCationList from "./Backend/components/imp_exp/exporters/AppliCationList";
 import HsCodes from "./Backend/components/admin/hs_code/HsCodes";
 import AddNewHsCode from "./Backend/components/admin/hs_code/AddNewHsCode";
 import EditHsCode from "./Backend/components/admin/hs_code/EditHsCode";
 import NaturalBiomaterials from "./Backend/components/admin/natural_biomaterials/NaturalBiomaterials";
 import AddNaturalBiomaterial from "./Backend/components/admin/natural_biomaterials/AddNaturalBiomaterial";
 import EditNaturalBiomaterial from "./Backend/components/admin/natural_biomaterials/EditNaturalBiomaterial";
-
-
+import Volumes from "./Backend/components/admin/quantityof_volume/Volumes";
+import AddVolume from "./Backend/components/admin/quantityof_volume/AddVolume";
+import EditVolume from "./Backend/components/admin/quantityof_volume/EditVolume";
+import SamplesCollected from "./Backend/components/admin/sampes_collected/SamplesCollected";
+import AddSampeCollected from "./Backend/components/admin/sampes_collected/AddSampeCollected";
+import EditSampleCollected from "./Backend/components/admin/sampes_collected/EditSampleCollected";
 
 function App({ role }) {
     return (
@@ -77,19 +81,27 @@ function App({ role }) {
                         <Route path="slider/add_new" element={<AddHomeSlider />} />
                         <Route path="slider/edit/:id" element={<EditHomeSlider />} />
 
-                        <Route path="hs_codes" element={<HsCodes />} />
-                        <Route path="hs_code/add_new" element={<AddNewHsCode />} />
+                        <Route path="hs_codes" element={<HsCodes/>} />
+                        <Route path="hs_code/add_new" element={<AddNewHsCode/>} />
                         <Route path="hs_code/edit/:id" element={<EditHsCode />} />
 
-                        <Route path="natural_biomaterials" element={<NaturalBiomaterials />} />
+                        <Route path="natural_biomaterials" element={<NaturalBiomaterials/>} />
                         <Route path="natural_biomaterial/add_new" element={<AddNaturalBiomaterial/>} />
                         <Route path="natural_biomaterial/edit/:id" element={<EditNaturalBiomaterial />} />
 
-                        <Route path="change-password" element={<ChangePassword />}/>
 
-                        {/* IMP-Exp */}
+                        <Route path="volumes" element={<Volumes/>} />
+                        <Route path="volume/add_new" element={<AddVolume/>} />
+                        <Route path="volume/edit/:id" element={<EditVolume />} />
+
+                        <Route path="where_samples_collected" element={<SamplesCollected/>} />
+                        <Route path="where_sample_collected/add_new" element={<AddSampeCollected/>} />
+                        <Route path="where_sample_collected/edit/:id" element={<EditSampleCollected />} />
+
                         <Route path="exporter/apply-noc-application" element={<ApplyNocRequest/>}/>
-                        <Route path="exporter/applications" element={<ApplicationList/>}/>
+                        <Route path="exporter/applications" element={<AppliCationList/>}/>
+
+                        <Route path="change-password" element={<ChangePassword />}/>
                     </Route>
 
                     <Route exact path="*" element={<PageNotFound />} />
