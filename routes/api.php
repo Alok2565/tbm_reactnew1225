@@ -11,12 +11,16 @@ use App\Http\Controllers\PasswordSetupController;
 use App\Http\Controllers\Admin\HomeSliderController;
 use App\Http\Controllers\Admin\HsCodeController;
 use App\Http\Controllers\Admin\NaturalBiomaterialController;
+use App\Http\Controllers\Admin\PurposeSampleStorageController;
 use App\Http\Controllers\Admin\QuantityofVolumeController;
+use App\Http\Controllers\Admin\SamplesUsedResearchAnalysisController;
+use App\Http\Controllers\Admin\SpecifyPurposeController;
 use App\Http\Controllers\Admin\whereSamplesCollectedController;
 use App\Http\Controllers\Auth\ImpExpUserLoginController;
 use App\Http\Controllers\Committee\CommitteeController;
 use App\Http\Controllers\Auth\ImpExpUserRegisterController;
 use App\Http\Controllers\Auth\UserLogoutController;
+use App\Http\Controllers\imp_exp\ImpExpController;
 
 // routes/api.php
 Route::get('/roles', [RoleController::class, 'index']);
@@ -63,18 +67,28 @@ Route::post('/logout', [UserLogoutController::class, 'logoutUser']);
 //     Route::get('/imp-exp/dashboard',     [AdminController::class, 'index']);
 // });
 
-// Route::middleware('role:admin')->get(
+// Route::middleware(['role:admin'])->get(
 //     '/admin/dashboard',
-//     [AdminController::class, 'index']
+//     [AdminController::class, 'indexAdmin']
 // );
 
+// Route::middleware(['role.role'])->get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
+// ADMIN / ICMR / COMMITTEE
+// Route::middleware(['jwt.verify:user_api', 'role:user_api,admin,icmr,committee'])
+//     ->get('/dashboard', [AdminController::class, 'index']);
 
-//Route::middleware(['jwt_verify.token'])->get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
-Route::group(['middleware' => ['jwt_verify.token']], function () {
+Route::middleware(['jwt.verify:user_api', 'role:user_api,committee'])
+    ->get('/committee/dashboard', [CommitteeController::class, 'indexCommittee']);
 
-    Route::get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
-    //dd("Testsdfsdgfvsdv");
-});
+Route::middleware(['jwt.verify:user_api', 'role:user_api,icmr'])
+    ->get('/icmr/dashboard', [IcmrController::class, 'indexIcmr']);
+
+// IMP-EXP
+Route::middleware(['jwt.verify:impexp_api', 'role:impexp_api,imp-exp'])
+    ->get('/imp-exp/dashboard', [ImpExpController::class, 'indexImpExp']);
+// Route::group(['middleware' => ['jwt.verify', 'role:imp-exp']], function () {
+//     Route::get('/admin/dashboard', [AdminController::class, 'indexAdmin']);
+// });
 
 // Route::middleware('role:icmr')->get(
 //     '/icmr/dashboard',
@@ -120,3 +134,24 @@ Route::get('/where_sample_collected/{id}', [whereSamplesCollectedController::cla
 Route::put('/where_sample_collected/update/{id}', [whereSamplesCollectedController::class, 'updateSamplesCollectede']);
 Route::put('/where_sample_collected/status/{id}', [whereSamplesCollectedController::class, 'statusSamplesCollectede']);
 Route::delete('/where_sample_collected/delete/{id}', [whereSamplesCollectedController::class, 'deleteSamplesCollectede']);
+
+Route::get('/specify_purposes', [SpecifyPurposeController::class, 'index']);
+Route::post('/specify_purpose/create', [SpecifyPurposeController::class, 'createSpecifyPurpose']);
+Route::get('/specify_purpose/{id}', [SpecifyPurposeController::class, 'showSpecifyPurposeData']);
+Route::put('/specify_purpose/update/{id}', [SpecifyPurposeController::class, 'updateSpecifyPurpose']);
+Route::put('/specify_purpose/status/{id}', [SpecifyPurposeController::class, 'statusSpecifyPurpose']);
+Route::delete('/specify_purpose/delete/{id}', [SpecifyPurposeController::class, 'deleteSpecifyPurpose']);
+
+Route::get('/used_research_analyses', [SamplesUsedResearchAnalysisController::class, 'index']);
+Route::post('/used_research_analysis/create', [SamplesUsedResearchAnalysisController::class, 'createUsedResearchAnalysis']);
+Route::get('/used_research_analysis/{id}', [SamplesUsedResearchAnalysisController::class, 'showUsedResearchAnalysisData']);
+Route::put('/used_research_analysis/update/{id}', [SamplesUsedResearchAnalysisController::class, 'updateUsedResearchAnalysis']);
+Route::put('/used_research_analysis/status/{id}', [SamplesUsedResearchAnalysisController::class, 'statusUsedResearchAnalysis']);
+Route::delete('/used_research_analysis/delete/{id}', [SamplesUsedResearchAnalysisController::class, 'deleteUsedResearchAnalysis']);
+
+Route::get('/purpose_sample_storages', [PurposeSampleStorageController::class, 'index']);
+Route::post('/purpose_sample_storage/create', [PurposeSampleStorageController::class, 'createPurposeSampleStorage']);
+Route::get('/purpose_sample_storage/{id}', [PurposeSampleStorageController::class, 'showPurposeSampleStorageData']);
+Route::put('/purpose_sample_storage/update/{id}', [PurposeSampleStorageController::class, 'updatePurposeSampleStorage']);
+Route::put('/purpose_sample_storage/status/{id}', [PurposeSampleStorageController::class, 'statusPurposeSampleStorage']);
+Route::delete('/purpose_sample_storage/delete/{id}', [PurposeSampleStorageController::class, 'deletePurposeSampleStorage']);

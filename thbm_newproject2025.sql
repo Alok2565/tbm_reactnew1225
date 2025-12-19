@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2025 at 01:01 PM
+-- Generation Time: Dec 19, 2025 at 01:10 PM
 -- Server version: 10.4.32-MariaDB-log
 -- PHP Version: 8.4.8
 
@@ -59,27 +59,11 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('laravel_cache_3zCO636BaPUG2aog', 's:7:\"forever\";', 2080891038),
-('laravel_cache_6bmxSK35pEEdrP0T', 's:7:\"forever\";', 2080894292),
-('laravel_cache_7JLOAVWtuNiNXVZ7', 's:7:\"forever\";', 2080898712),
-('laravel_cache_7RXHb23oaM42sdlk', 'a:1:{s:11:\"valid_until\";i:1765539522;}', 1766748582),
-('laravel_cache_9tU182NrwnbAAjvG', 's:7:\"forever\";', 2080896785),
-('laravel_cache_hP4O2F4Vxv2a4qTu', 's:7:\"forever\";', 2080893762),
-('laravel_cache_HqJXBBtGIWcuku3t', 's:7:\"forever\";', 2080898316),
-('laravel_cache_jKghqX7HU1Cv0GTE', 's:7:\"forever\";', 2080891724),
-('laravel_cache_PkVFNjIohpnpIFOQ', 's:7:\"forever\";', 2080894204),
-('laravel_cache_qIWeccO69GuYsDbV', 's:7:\"forever\";', 2080893611),
-('laravel_cache_QNJOa2ECDzwOnFvo', 's:7:\"forever\";', 2080891167),
-('laravel_cache_spBjiIyTmvvsoGah', 's:7:\"forever\";', 2080900661),
-('laravel_cache_Swx8VCQAz0pEt7CH', 'a:1:{s:11:\"valid_until\";i:1765539573;}', 1766749233),
-('laravel_cache_UdzHpIADWOhoNX1A', 's:7:\"forever\";', 2080890919),
-('laravel_cache_uOGOxwTx5JoRYBJF', 's:7:\"forever\";', 2080893262),
-('laravel_cache_vLBimGt44SiUDEkp', 's:7:\"forever\";', 2080893346),
-('laravel_cache_WFG96XfPYg7r1DCZ', 's:7:\"forever\";', 2080898266),
-('laravel_cache_WkixAw9xTxUL00Hs', 's:7:\"forever\";', 2080898051),
-('laravel_cache_Y7oW7u71OD4zbD7o', 's:7:\"forever\";', 2080893446),
-('laravel_cache_z5j9CVsOFTOMlkCi', 's:7:\"forever\";', 2080891331),
-('laravel_cache_zbtZTtOOVC7T0Myg', 'a:1:{s:11:\"valid_until\";i:1765539645;}', 1766749305);
+('laravel_cache_PCcCqhy8y0BZpbkU', 's:7:\"forever\";', 2081500507),
+('laravel_cache_RPgLmtSHOVtYpbNO', 's:7:\"forever\";', 2081499091),
+('laravel_cache_sGjceDweO1scU81Z', 's:7:\"forever\";', 2081499937),
+('laravel_cache_SQsxp9pg3jDttz0O', 's:7:\"forever\";', 2081500186),
+('laravel_cache_YJsVvMlN3dNLY3c3', 's:7:\"forever\";', 2081502365);
 
 -- --------------------------------------------------------
 
@@ -396,6 +380,29 @@ INSERT INTO `home_sliders` (`id`, `banner_title`, `banner_slug`, `image`, `statu
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `hs_codes`
+--
+
+CREATE TABLE `hs_codes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `hs_code` varchar(255) DEFAULT NULL,
+  `desc` text DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `hs_codes`
+--
+
+INSERT INTO `hs_codes` (`id`, `hs_code`, `desc`, `status`, `created_at`, `updated_at`) VALUES
+(1, '30021020', 'Antisera and other blood fractions and immunological products, whether or not modified or obtained by means of biotechnological processes', 1, '2025-12-16 07:20:17', '2025-12-17 07:24:31'),
+(2, '30021091', 'Antisera and other blood fractions and immunological products, whether or not modified or obtained by means of biotechnological processes.', 1, '2025-12-17 06:59:40', '2025-12-17 06:59:40');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hs_code_items`
 --
 
@@ -440,7 +447,8 @@ CREATE TABLE `imp_exp_users` (
 --
 
 INSERT INTO `imp_exp_users` (`id`, `role_id`, `iec_code`, `name`, `email`, `address`, `address2`, `department`, `designation`, `state`, `city`, `pincode`, `mobile_number`, `status`, `ip_address`, `created_at`, `updated_at`) VALUES
-(2, 4, 'IEC0000003', 'Entity 3', 'iec_user30@yopmail.com', 'Address 3A', 'Address 3B', 'Test Dept3', 'Test Desgn3', 'State3', 'City3', '123458', '3333333333', 1, '127.0.0.1', '2025-12-11 08:40:36', '2025-12-11 08:40:36');
+(2, 4, 'IEC0000003', 'Entity 3', 'iec_user30@yopmail.com', 'Address 3A', 'Address 3B', 'Test Dept3', 'Test Desgn3', 'State3', 'City3', '123458', '3333333333', 1, '127.0.0.1', '2025-12-11 08:40:36', '2025-12-11 08:40:36'),
+(3, 4, 'IEC0000008', 'Entity 8', 'iec_user8@yopmail.com', 'Address 8A', 'Address 8B', 'adfasf', 'asdfasda', 'State8', 'City8', '123463', '8888888883', 1, '127.0.0.1', '2025-12-19 04:26:07', '2025-12-19 04:26:07');
 
 -- --------------------------------------------------------
 
@@ -470,7 +478,8 @@ CREATE TABLE `imp_exp_user_logins` (
 --
 
 INSERT INTO `imp_exp_user_logins` (`id`, `impexp_user_id`, `role_id`, `iec_code`, `email`, `password`, `remember_token`, `auth_token`, `validity_status`, `status`, `ip_address`, `invalid_at`, `created_at`, `updated_at`) VALUES
-(1, 2, 4, 'IEC0000003', 'iec_user30@yopmail.com', 'e3e1511325e2a33bc3bde999c521927213111c5b4f2c0d61aa7de54ab9ae3a95', 'TuV12ih4ntBekHJaNPKfMqCtxYiBlYKkrBPM4j1lWCqxdRdJJT2kEagur1P5F17vr', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2dlbmVyYXRlLXBhc3N3b3JkLzMiLCJpYXQiOjE3NjQ4NDQ1NzgsImV4cCI6MTc2NDg0ODE3OCwibmJmIjoxNzY0ODQ0NTc4LCJqdGkiOiJkUzJNalk4bXBtMzlXM0FZIiwic3ViIjoiMyIsInBydiI6ImU0MzY0MDJkZjM1NzNiOD', 'true', 1, '127.0.0.1', NULL, '2025-12-11 08:40:36', '2025-12-11 12:09:35');
+(1, 2, 4, 'IEC0000003', 'iec_user30@yopmail.com', 'e3e1511325e2a33bc3bde999c521927213111c5b4f2c0d61aa7de54ab9ae3a95', 'TuV12ih4ntBekHJaNPKfMqCtxYiBlYKkrBPM4j1lWCqxdRdJJT2kEagur1P5F17vr', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2dlbmVyYXRlLXBhc3N3b3JkLzMiLCJpYXQiOjE3NjQ4NDQ1NzgsImV4cCI6MTc2NDg0ODE3OCwibmJmIjoxNzY0ODQ0NTc4LCJqdGkiOiJkUzJNalk4bXBtMzlXM0FZIiwic3ViIjoiMyIsInBydiI6ImU0MzY0MDJkZjM1NzNiOD', 'true', 1, '127.0.0.1', NULL, '2025-12-11 08:40:36', '2025-12-16 09:05:04'),
+(3, 3, 4, 'IEC0000008', 'iec_user8@yopmail.com', NULL, NULL, NULL, 'true', 1, '127.0.0.1', NULL, '2025-12-19 04:26:07', '2025-12-19 04:26:07');
 
 -- --------------------------------------------------------
 
@@ -572,7 +581,39 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (28, '2025_12_10_140600_create_directors_table', 8),
 (29, '2025_12_10_140612_create_branches_table', 9),
 (30, '2025_07_14_105945_create_imp_exp_users_table', 10),
-(31, '2025_12_08_142758_create_imp_exp_user_logins_table', 11);
+(31, '2025_12_08_142758_create_imp_exp_user_logins_table', 11),
+(32, '2025_12_16_123942_create_hs_codes_table', 12),
+(33, '2025_12_14_190806_create_natural_biomaterials_table', 13),
+(34, '2025_12_17_153223_create_quantityof_volumes_table', 14),
+(35, '2025_12_17_165158_create_where_samples_collecteds_table', 15),
+(36, '2025_12_18_095156_create_specify_purpose_end_uses_table', 16),
+(37, '2025_12_18_095345_create_samples_used_research_analyses_table', 17),
+(38, '2025_12_18_101613_create_purpose_sample_storages_table', 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `natural_biomaterials`
+--
+
+CREATE TABLE `natural_biomaterials` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `natural_biomaterials`
+--
+
+INSERT INTO `natural_biomaterials` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Whole blood', 'whole blood', 1, '2025-12-17 07:19:19', '2025-12-17 10:48:18'),
+(2, 'Urine', 'urine', 1, '2025-12-17 08:45:48', '2025-12-17 08:45:48'),
+(3, 'Serurm', 'serurm', 1, '2025-12-17 08:47:19', '2025-12-17 09:05:19'),
+(4, 'Others', 'Others', 1, '2025-12-17 10:50:27', '2025-12-17 10:50:27');
 
 -- --------------------------------------------------------
 
@@ -585,6 +626,54 @@ CREATE TABLE `password_reset_tokens` (
   `token` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `purpose_sample_storages`
+--
+
+CREATE TABLE `purpose_sample_storages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `purpose_sample_storages`
+--
+
+INSERT INTO `purpose_sample_storages` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Retesting purposes', 'Retesting purposes', 1, '2025-12-18 09:44:28', '2025-12-18 09:44:28'),
+(2, 'Further analysis', 'Further analysis', 1, '2025-12-18 09:45:17', '2025-12-18 09:45:17');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quantityof_volumes`
+--
+
+CREATE TABLE `quantityof_volumes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quantityof_volumes`
+--
+
+INSERT INTO `quantityof_volumes` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'ML', 'ML', 1, '2025-12-17 10:45:34', '2025-12-17 10:45:34'),
+(2, 'L', 'L', 1, '2025-12-17 10:45:40', '2025-12-17 10:45:40'),
+(3, 'μL', 'μL', 1, '2025-12-17 10:45:56', '2025-12-17 10:45:56'),
+(4, 'test1', 'test1', 1, '2025-12-17 10:59:28', '2025-12-17 11:00:34');
 
 -- --------------------------------------------------------
 
@@ -616,6 +705,32 @@ INSERT INTO `roles` (`id`, `role_name`, `role_slug`, `status`, `created_at`, `up
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `samples_used_research_analyses`
+--
+
+CREATE TABLE `samples_used_research_analyses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `samples_used_research_analyses`
+--
+
+INSERT INTO `samples_used_research_analyses` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Calibration/ Quality assuranc', 'Calibration/ Quality assuranc', 1, '2025-12-18 08:34:53', '2025-12-18 08:40:54'),
+(2, 'Transcriptomics Studies', 'Transcriptomics Studies', 1, '2025-12-18 08:35:40', '2025-12-18 08:35:40'),
+(3, 'Proteomic Studies', 'Proteomic Studies', 1, '2025-12-18 08:35:48', '2025-12-18 08:35:48'),
+(4, 'Metabolomic Studies', 'Metabolomic Studies', 1, '2025-12-18 08:36:01', '2025-12-18 08:36:01'),
+(5, 'Others', 'Others', 1, '2025-12-18 08:36:14', '2025-12-18 08:36:14');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sessions`
 --
 
@@ -633,9 +748,34 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('0JPJrTLyzcc6JYPIJo2Pkk3FTV5fkIWIuMNcWAs2', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidlBKdmdjT2tOOHREaFBvdVVJc3cxV0JQVmtEeVlpSER6ZW1NbmFJQyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8ud2VsbC1rbm93bi9hcHBzcGVjaWZpYy9jb20uY2hyb21lLmRldnRvb2xzLmpzb24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1765535952),
-('Q3AkJJmu4xH2ipboOjPSM3BPiWzvizO0PdKaJVDp', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiTDBvTFpYR2VWZGY1cHNNUjZscnVlNlJJSW13OHQ3WmFJVUl4bHNZSSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NzA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC8ud2VsbC1rbm93bi9hcHBzcGVjaWZpYy9jb20uY2hyb21lLmRldnRvb2xzLmpzb24iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1765540790),
-('qSGAF6DDHshIoqgrH7sZliHkgzHhRk8LFRyLJzsG', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWFRkQ0Q3N090SjlucWNLcEJ2T2d0TTRDanNpTURmY3hma1R1TFJiWiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iZW5lZmljaWFyeS9sb2dpbj9yb2xlPWljbXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1765534113);
+('LyPN5yB1hRIGAOoXFS0s6nlKrKw5lSzNgJag0g2a', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiaDk3UnhieUkwMGpkOE82U0tJMzlSekJBTkgwSHF3VDJEWnN5SUtSNyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9iZW5lZmljaWFyeS9sb2dpbj9yb2xlPWljbXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1766146035),
+('TZUlIjYPJ2WcYCxuG3mhQvsKTZQirp4HdVXD9ocm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY2RBSVFrSThhR0lUeGY3b3Q2QWZYRjdwdHVvSHJMSEJzenpZQnBhUiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1766146036),
+('zjc6fZaNuyuD7esItiZmHbwqllo1FEiPLZgXEz0k', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiM281TVVpUkdwaEpjWmw3OTJhOExJejN3eXN0WXVFYUI1QWkxVGkzNCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NjA6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9pbXAtZXhwL2V4cG9ydGVyL2FwcGx5LW5vYy1hcHBsaWNhdGlvbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1766139004);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `specify_purpose_end_uses`
+--
+
+CREATE TABLE `specify_purpose_end_uses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `specify_purpose_end_uses`
+--
+
+INSERT INTO `specify_purpose_end_uses` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Calibration/ Quality assuranc', 'Calibration/ Quality assuranc', 1, '2025-12-18 08:12:01', '2025-12-18 08:37:55'),
+(2, 'Clinical Diagnostics/ Testing', 'Clinical Diagnostics/ Testing', 1, '2025-12-18 08:13:02', '2025-12-18 08:13:02'),
+(3, 'Biobanking', 'Biobanking', 1, '2025-12-18 08:13:17', '2025-12-18 08:13:17'),
+(4, 'Others', 'Others', 1, '2025-12-18 08:14:03', '2025-12-18 08:14:03');
 
 -- --------------------------------------------------------
 
@@ -719,6 +859,32 @@ CREATE TABLE `user_login_histories` (
   `logout_datetime` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `where_samples_collecteds`
+--
+
+CREATE TABLE `where_samples_collecteds` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT 'true=1, false=0',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `where_samples_collecteds`
+--
+
+INSERT INTO `where_samples_collecteds` (`id`, `name`, `value`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Inpatient hospital facility', 'Inpatient hospital facility', 1, '2025-12-17 11:27:49', '2025-12-17 11:30:02'),
+(2, 'Outpatient hospital facility', 'Outpatient hospital facility', 1, '2025-12-17 11:28:04', '2025-12-17 11:28:04'),
+(3, 'Clinical/ Diagnostic laboratory', 'Clinical/ Diagnostic laboratory', 1, '2025-12-17 11:29:19', '2025-12-17 11:29:19'),
+(4, 'Research laboratory', 'Research laboratory', 1, '2025-12-17 11:29:38', '2025-12-17 11:29:38'),
+(5, 'Others', 'Others', 1, '2025-12-17 11:29:55', '2025-12-17 11:29:55');
+
 --
 -- Indexes for dumped tables
 --
@@ -780,6 +946,12 @@ ALTER TABLE `home_sliders`
   ADD UNIQUE KEY `home_sliders_banner_slug_unique` (`banner_slug`);
 
 --
+-- Indexes for table `hs_codes`
+--
+ALTER TABLE `hs_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `imp_exp_users`
 --
 ALTER TABLE `imp_exp_users`
@@ -824,10 +996,28 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `natural_biomaterials`
+--
+ALTER TABLE `natural_biomaterials`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `purpose_sample_storages`
+--
+ALTER TABLE `purpose_sample_storages`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `quantityof_volumes`
+--
+ALTER TABLE `quantityof_volumes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `roles`
@@ -838,12 +1028,24 @@ ALTER TABLE `roles`
   ADD UNIQUE KEY `roles_role_slug_unique` (`role_slug`);
 
 --
+-- Indexes for table `samples_used_research_analyses`
+--
+ALTER TABLE `samples_used_research_analyses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
   ADD KEY `sessions_user_id_index` (`user_id`),
   ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `specify_purpose_end_uses`
+--
+ALTER TABLE `specify_purpose_end_uses`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -870,6 +1072,12 @@ ALTER TABLE `user_login_histories`
   ADD KEY `user_login_histories_user_login_id_foreign` (`user_login_id`),
   ADD KEY `user_login_histories_user_id_foreign` (`user_id`),
   ADD KEY `user_login_histories_impexp_user_id_foreign` (`impexp_user_id`);
+
+--
+-- Indexes for table `where_samples_collecteds`
+--
+ALTER TABLE `where_samples_collecteds`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -918,16 +1126,22 @@ ALTER TABLE `home_sliders`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `hs_codes`
+--
+ALTER TABLE `hs_codes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `imp_exp_users`
 --
 ALTER TABLE `imp_exp_users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `imp_exp_user_logins`
 --
 ALTER TABLE `imp_exp_user_logins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `imp_exp_user_profiles`
@@ -945,13 +1159,43 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `natural_biomaterials`
+--
+ALTER TABLE `natural_biomaterials`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `purpose_sample_storages`
+--
+ALTER TABLE `purpose_sample_storages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `quantityof_volumes`
+--
+ALTER TABLE `quantityof_volumes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `samples_used_research_analyses`
+--
+ALTER TABLE `samples_used_research_analyses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `specify_purpose_end_uses`
+--
+ALTER TABLE `specify_purpose_end_uses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -970,6 +1214,12 @@ ALTER TABLE `user_logins`
 --
 ALTER TABLE `user_login_histories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `where_samples_collecteds`
+--
+ALTER TABLE `where_samples_collecteds`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

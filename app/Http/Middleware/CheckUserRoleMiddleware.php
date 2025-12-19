@@ -13,17 +13,45 @@ class CheckUserRoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, ...$roles)
+    public function handle(Request $request, Closure $next, $guard, ...$roles)
     {
-        $user = auth('api')->user();
+        //\Illuminate\Support\Facades\Log::info('Role middleware hit');
+        $login = auth($guard)->user();
 
-        if (!$user || !$user->role || !in_array($user->role->role_slug, $roles)) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Unauthorized role access'
-            ], 403);
+        if (!$login) {
+            return response()->json(['status' => false, 'message' => 'Unauthenticated'], 401);
         }
-
+        $role = null;
+        if ($guard === 'user_api') {
+            $role = $login->user->role->role_slug ?? null;
+        }
+        if ($guard === 'impexp_api') {
+            $role = $login->impExpUser->role->role_slug ?? null;
+        }
+        if (!in_array($role, $roles)) {
+            return response()->json(['status' => false, 'message' => 'Unauthorized'], 403);
+        }
         return $next($request);
     }
+    // public function handle(Request $request, Closure $next, ...$roles)
+    // {
+    //     \Illuminate\Support\Facades\Log::info('Role middleware hit');
+    //     $user = auth('api')->user();
+
+    //     if (!$user) {
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => 'Unauthenticated'
+    //         ], 401);
+    //     }
+
+    //     if (!$user->role || !in_array($user->role->role_slug, $roles)) {
+    //         return response()->json([
+    //             'status' => false,
+    //             'message' => 'Unauthorized role access'
+    //         ], 403);
+    //     }
+
+    //     return $next($request);
+    // }
 }

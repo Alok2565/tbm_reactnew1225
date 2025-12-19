@@ -220,12 +220,12 @@ function NavSidebar({ collapsed }) {
                             {/* Purpose */}
                             <SubMenu
                                 icon={<FaSliders color="white" />}
-                                label="Purpose of End Use"
+                                label="Specify Purpose End Use"
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All Purposes</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Purpose</MenuItem>
+                                <MenuItem component={<Link to="/admin/specify_purpose_end_uses" />}>All Specify Purposes</MenuItem>
+                                <MenuItem component={<Link to="/admin/specify_purpose_end_use/add_new" />}>Add New Specify Purpose</MenuItem>
                             </SubMenu>
 
                             {/* Research */}
@@ -235,19 +235,19 @@ function NavSidebar({ collapsed }) {
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All Research Analyses</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Analysis</MenuItem>
+                                <MenuItem component={<Link to="/admin/used_research_analyses" />}>All Research Analyses</MenuItem>
+                                <MenuItem component={<Link to="/admin/used_research_analysis/add_new" />}>Add New Research Analysis</MenuItem>
                             </SubMenu>
 
                             {/* Samples Storage */}
                             <SubMenu
                                 icon={<FaSliders color="white" />}
-                                label="Samples Storage"
+                                label="Purpose Sample Storage"
                                 className="border-top"
                                 style={tightItemStyle}
                             >
-                                <MenuItem component={<Link to="#" />}>All Storage</MenuItem>
-                                <MenuItem component={<Link to="#" />}>Add New Storage</MenuItem>
+                                <MenuItem component={<Link to="/admin/purpose_sample_storages" />}>All Sample Storage</MenuItem>
+                                <MenuItem component={<Link to="/admin/purpose_sample_storage/add_new" />}>Add New Sample Storage</MenuItem>
                             </SubMenu>
                         </>
                     )}

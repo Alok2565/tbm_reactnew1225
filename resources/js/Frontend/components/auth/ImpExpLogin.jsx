@@ -23,36 +23,36 @@ function ImExpLogin() {
 
     const allowedRoles = ["imp-exp"];
     useEffect(() => {
-            const queryParams = new URLSearchParams(location.search);
-            const roleParam = queryParams.get('role');
-    
-            if (!roleParam) {
-                setError(`Role is missing in URL. Example: ?role=${allowedRoles}`);
-                return;
-            }
-    
-            if (!allowedRoles.includes(roleParam)) {
-                setError(`Invalid role "${roleParam}". Allowed roles: imp-exp`);
-                return;
-            }
-    
-            setRole(roleParam);
-            setError('');
-        }, [location.search]);
-    
-        // -----------------------------
-        // AUTO REDIRECT IF LOGGED IN
-        // -----------------------------
-        useEffect(() => {
-            const token = localStorage.getItem("token");
-            const storedRole = localStorage.getItem("role");
-    
-            if (token && storedRole) {
-                navigate(`/${storedRole}/dashboard`, { replace: true });
-            }
-        }, [navigate]);
+        const queryParams = new URLSearchParams(location.search);
+        const roleParam = queryParams.get('role');
 
-const handleLogin = async () => {
+        if (!roleParam) {
+            setError(`Role is missing in URL. Example: ?role=${allowedRoles}`);
+            return;
+        }
+
+        if (!allowedRoles.includes(roleParam)) {
+            setError(`Invalid role "${roleParam}". Allowed roles: imp-exp`);
+            return;
+        }
+
+        setRole(roleParam);
+        setError('');
+    }, [location.search]);
+
+    // -----------------------------
+    // AUTO REDIRECT IF LOGGED IN
+    // -----------------------------
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const storedRole = localStorage.getItem("role");
+
+        if (token && storedRole) {
+            navigate(`/${storedRole}/dashboard`, { replace: true });
+        }
+    }, [navigate]);
+
+    const handleLogin = async () => {
         if (!role) return;
 
         try {
@@ -71,7 +71,7 @@ const handleLogin = async () => {
             localStorage.setItem("role", user.role);
             localStorage.setItem("iec_code", user.iec_code);
             localStorage.setItem("user", JSON.stringify(user));
-console.log("Showing Login Token to logout:", token);
+            console.log("Showing Login Token to logout:", token);
             // Redirect to dashboard
             navigate(`/${user.role}/dashboard`, { replace: true });
 

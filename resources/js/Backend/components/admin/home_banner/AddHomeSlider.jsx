@@ -172,7 +172,7 @@ function AddHomeSlider() {
                                         </Form.Group>
                                     </Row>
 
-                                    <Button type="submit" disabled={loading}>
+                                    <Button variant="primary" type="submit" disabled={loading}>
                                         {loading ? "Adding..." : "Add Slider"}
                                     </Button>
                                 </Form>

@@ -23,7 +23,7 @@ class UserLogin extends Authenticatable implements JWTSubject
         'status',
         'ip_address'
     ];
-
+    protected $hidden = ['password', 'remember_token'];
 
     public function getJWTIdentifier()
     {
@@ -35,12 +35,28 @@ class UserLogin extends Authenticatable implements JWTSubject
         return [];
     }
 
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class, 'user_id' . 'id');
+    // }
+
+    // public function getJWTIdentifier()
+    // {
+    //     return $this->getKey();
+    // }
+
+    // public function getJWTCustomClaims()
+    // {
+    //     return [];
+    // }
+
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
-    public function histories()
-    {
-        return $this->hasMany(UserLoginHistory::class);
-    }
+    // public function histories()
+    // {
+    //     return $this->hasMany(UserLoginHistory::class);
+    // }
 }

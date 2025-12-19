@@ -35,17 +35,6 @@ class User extends Authenticatable implements JWTSubject
     ];
 
 
-    // relation to role
-    public function role()
-    {
-        return $this->belongsTo(Role::class, 'role_id', 'id');
-    }
-
-    // relation to user_logins (one-to-one)
-    public function userLogin()
-    {
-        return $this->hasOne(UserLogin::class, 'user_id', 'id');
-    }
 
     // JWTSubject interface methods
     public function getJWTIdentifier()
@@ -57,6 +46,28 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    // relation to role
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    // relation to user_logins (one-to-one)
+    public function userLogin()
+    {
+        return $this->hasOne(UserLogin::class, 'user_id', 'id');
+    }
+
+    // // relation to role
+    // public function role()
+    // {
+    //     return $this->belongsTo(Role::class, 'role_id', 'id');
+    // }
+    // // relation to user_logins (one-to-one)
+    // public function userLogin()
+    // {
+    //     return $this->hasOne(UserLogin::class, 'user_id', 'id');
+    // }
+
     /**
      * The attributes that should be hidden for serialization.
      *

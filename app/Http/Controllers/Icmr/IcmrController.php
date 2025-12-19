@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class IcmrController extends Controller
 {
-    public function index()
+    public function indexIcmr()
     {
+        // return response()->json([
+        //     'status' => true,
+        //     'message' => 'Imp EXP dashboard access granted',
+
+        // ]);
         $tiles = [
             ['title' => 'Total Exporters Registered', 'count' => 22, 'type' => 'count', 'color' => '#00d11a94'],
             ['title' => 'Fresh Applications Received', 'count' => 9, 'type' => 'count', 'color' => '#688A22'],

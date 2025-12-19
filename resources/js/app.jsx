@@ -48,6 +48,15 @@ import EditVolume from "./Backend/components/admin/quantityof_volume/EditVolume"
 import SamplesCollected from "./Backend/components/admin/sampes_collected/SamplesCollected";
 import AddSampeCollected from "./Backend/components/admin/sampes_collected/AddSampeCollected";
 import EditSampleCollected from "./Backend/components/admin/sampes_collected/EditSampleCollected";
+import SpecifyPurposeEndUses from "./Backend/components/admin/specify_purpose/SpecifyPurposeEndUses";
+import AddSpecifyPurposeEndUse from "./Backend/components/admin/specify_purpose/AddSpecifyPurposeEndUse";
+import EditSpecifyPurposeEndUse from "./Backend/components/admin/specify_purpose/EditSpecifyPurposeEndUse";
+import SampleResearchAnalyses from "./Backend/components/admin/research_analyses/SampleResearchAnalyses";
+import AddSampleResearchAnalysis from "./Backend/components/admin/research_analyses/AddSampleResearchAnalysis";
+import EditSampleResearchAnalysis from "./Backend/components/admin/research_analyses/EditSampleResearchAnalysis";
+import SampleStorages from "./Backend/components/admin/purposeof_samples_storage/SampleStorages";
+import AddSampleStorage from "./Backend/components/admin/purposeof_samples_storage/AddSampleStorage";
+import EditSampleStorage from "./Backend/components/admin/purposeof_samples_storage/EditSampleStorage";
 
 function App({ role }) {
     return (
@@ -59,15 +68,15 @@ function App({ role }) {
                         <Route exact path="/about-us" element={<About />} />
                         <Route exact path="/contact-us" element={<Contact />} />
                         <Route exact path="/beneficiary/register" element={<ImpExpRegister />} />
-                        <Route exact path="/beneficiary/login" element={<LoginRouter />}/>
-                        <Route exact path="/forgot-password" element={<ForgotPassword />}/>
-                        <Route exact path="/forgot-password-link" element={<ForgotPasswordLink />}/>
+                        <Route exact path="/beneficiary/login" element={<LoginRouter />} />
+                        <Route exact path="/forgot-password" element={<ForgotPassword />} />
+                        <Route exact path="/forgot-password-link" element={<ForgotPasswordLink />} />
                         <Route exact path="/reset-password" element={<ResetPassword />} />
-                        <Route exact path="/generate-password/:id" element={<GeneratePassword />}/>
-                        <Route exact path="/generate-password-link-message/" element={<GeneratePasswordLinkMessage/>}/> 
-                      
+                        <Route exact path="/generate-password/:id" element={<GeneratePassword />} />
+                        <Route exact path="/generate-password-link-message/" element={<GeneratePasswordLinkMessage />} />
+
                     </Route>
-                    
+
                     <Route path="/:role" element={<BackendLayout />}>
                         <Route path="dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
                         <Route path="users" element={<Users />} />
@@ -81,27 +90,38 @@ function App({ role }) {
                         <Route path="slider/add_new" element={<AddHomeSlider />} />
                         <Route path="slider/edit/:id" element={<EditHomeSlider />} />
 
-                        <Route path="hs_codes" element={<HsCodes/>} />
-                        <Route path="hs_code/add_new" element={<AddNewHsCode/>} />
+                        <Route path="hs_codes" element={<HsCodes />} />
+                        <Route path="hs_code/add_new" element={<AddNewHsCode />} />
                         <Route path="hs_code/edit/:id" element={<EditHsCode />} />
 
-                        <Route path="natural_biomaterials" element={<NaturalBiomaterials/>} />
-                        <Route path="natural_biomaterial/add_new" element={<AddNaturalBiomaterial/>} />
+                        <Route path="natural_biomaterials" element={<NaturalBiomaterials />} />
+                        <Route path="natural_biomaterial/add_new" element={<AddNaturalBiomaterial />} />
                         <Route path="natural_biomaterial/edit/:id" element={<EditNaturalBiomaterial />} />
 
-
-                        <Route path="volumes" element={<Volumes/>} />
-                        <Route path="volume/add_new" element={<AddVolume/>} />
+                        <Route path="volumes" element={<Volumes />} />
+                        <Route path="volume/add_new" element={<AddVolume />} />
                         <Route path="volume/edit/:id" element={<EditVolume />} />
 
-                        <Route path="where_samples_collected" element={<SamplesCollected/>} />
-                        <Route path="where_sample_collected/add_new" element={<AddSampeCollected/>} />
+                        <Route path="where_samples_collected" element={<SamplesCollected />} />
+                        <Route path="where_sample_collected/add_new" element={<AddSampeCollected />} />
                         <Route path="where_sample_collected/edit/:id" element={<EditSampleCollected />} />
 
-                        <Route path="exporter/apply-noc-application" element={<ApplyNocRequest/>}/>
-                        <Route path="exporter/applications" element={<AppliCationList/>}/>
+                        <Route path="specify_purpose_end_uses" element={<SpecifyPurposeEndUses />} />
+                        <Route path="specify_purpose_end_use/add_new" element={<AddSpecifyPurposeEndUse />} />
+                        <Route path="specify_purpose_end_use/edit/:id" element={<EditSpecifyPurposeEndUse />} />
 
-                        <Route path="change-password" element={<ChangePassword />}/>
+                        <Route path="used_research_analyses" element={<SampleResearchAnalyses />} />
+                        <Route path="used_research_analysis/add_new" element={<AddSampleResearchAnalysis />} />
+                        <Route path="used_research_analysis/edit/:id" element={<EditSampleResearchAnalysis />} />
+
+                        <Route path="purpose_sample_storages" element={<SampleStorages />} />
+                        <Route path="purpose_sample_storage/add_new" element={<AddSampleStorage />} />
+                        <Route path="purpose_sample_storage/edit/:id" element={<EditSampleStorage />} />
+
+                        <Route path="exporter/apply-noc-application" element={<ApplyNocRequest />} />
+                        <Route path="exporter/applications" element={<AppliCationList />} />
+
+                        <Route path="change-password" element={<ChangePassword />} />
                     </Route>
 
                     <Route exact path="*" element={<PageNotFound />} />

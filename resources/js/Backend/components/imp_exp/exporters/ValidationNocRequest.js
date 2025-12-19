@@ -21,9 +21,9 @@ const ValidationNocRequest = (formData) => {
     ) {
         errors.denied_export_auth_details = "Please provide the details";
     }
-    if (!formData.upload_comp_instof_sending.trim()) {
-        errors.upload_comp_instof_sending = "Please upload relevant document";
-    }
+    // if (!formData.upload_comp_instof_sending.trim()) {
+    //     errors.upload_comp_instof_sending = "Please upload relevant document";
+    // }
     if (!formData.nameof_recipient.trim()) {
         errors.nameof_recipient = "Please fill the required field";
     }
@@ -136,9 +136,9 @@ const ValidationNocRequest = (formData) => {
     ) {
         errors.whether_samples_used_research_analysis_desc = "Please provide details";
     }
-    if (!formData.upload_purposeof_planned_analysis.trim()) {
-        errors.upload_purposeof_planned_analysis = "Please upload relevant document";
-    }
+    // if (!formData.upload_purposeof_planned_analysis.trim()) {
+    //     errors.upload_purposeof_planned_analysis = "Please upload relevant document";
+    // }
 
     if (!formData.leftover_samples_store_yes_no || !formData.leftover_samples_store_yes_no.trim()) {
         errors.leftover_samples_store_yes_no = "Please select an option";
